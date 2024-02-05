@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WeatherApp.MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.8*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Label Text="输入城市名称：" Grid.Column="0" />
+            <Entry HeightRequest="29" HorizontalOptions="Center" x:Name="txt_City" Grid.Column="1" WidthRequest="200"/>
+            <Button Text="查询" HeightRequest="28" x:Name="button1" Clicked="button1_Click" Grid.Column="2" WidthRequest="50" />
+        </Grid>
+        <Grid Grid.Row="1">
+            <Label Text="当前天气：" Grid.Column="0" />
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label x:Name="lbl_Info" Text="{Binding Path=Info}" Grid.Column="0"/>
+            <Image x:Name="image_Info" WidthRequest="50" HeightRequest="50"/>
+            <StackLayout VerticalOptions="Center" Grid.Column="1" >
+                <Label Text="温度："/>
+                <Label x:Name="lbl_Temperature"  Text="{Binding Path=Temperature}" Grid.Column="1"/>
+            </StackLayout>
+            <StackLayout Grid.Column="2" VerticalOptions="Center">
+                <Label Text="湿度："/>
+                <Label x:Name="lbl_Humidity"  Text="{Binding Path=Humidity}" Grid.Column="1"/>
+                <Label Text="空气质量："/>
+                <Label x:Name="lbl_Aqi"  Text="{Binding Path=Aqi}" Grid.Column="1"/>
+            </StackLayout>
+            <StackLayout Grid.Column="3"  VerticalOptions="Center">
+                <Label x:Name="lbl_Direct"  Text="{Binding Path=Direct}" Grid.Column="1"/>
+                <Label x:Name="lbl_Power"  Text="{Binding Path=Power}" Grid.Column="1"/>
+            </StackLayout>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Label Text="未来五天天气：" Grid.Column="0" />
+        </Grid>
+        <Grid Grid.Row="4">
+            <CollectionView x:Name="listBox_Future" HorizontalOptions="Center" ItemsLayout="HorizontalList" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Background="LightGray">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="10,10,10,10" />
+                            </Border.StrokeShape>
+                            <StackLayout HorizontalOptions="Center">
+                                <Label x:Name="lbl_FutureDate" Text="{Binding Path=Date}"/>
+                                <Label x:Name="lbl_FutureTemperatur" Text="{Binding Path=Temperature}"/>
+                                <Label x:Name="lbl_FutureWeather" Text="{Binding Path=Weather}"/>
+                                <Label x:Name="lbl_FutureDirect" Text="{Binding Path=Direct}"/>
+                            </StackLayout>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Grid>
+    </Grid>
+
+</ContentPage>
