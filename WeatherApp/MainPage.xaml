@@ -17,9 +17,9 @@
                 <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="3*"/>
             </Grid.ColumnDefinitions>
-            <Label Text="输入城市名称：" Grid.Column="0" />
+            <Label Text="输入城市名称：" VerticalOptions="Center" Grid.Column="0" />
             <Entry HeightRequest="29" HorizontalOptions="Center" x:Name="txt_City" Grid.Column="1" WidthRequest="200"/>
-            <Button Text="查询" HeightRequest="28" x:Name="button1" Clicked="button1_Click" Grid.Column="2" WidthRequest="50" />
+            <Button Text="查询" HeightRequest="28" x:Name="button1" Clicked="button1_Click" Grid.Column="2" WidthRequest="55" />
         </Grid>
         <Grid Grid.Row="1">
             <Label Text="当前天气：" Grid.Column="0" />
@@ -31,7 +31,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label x:Name="lbl_Info" Text="{Binding Path=Info}" Grid.Column="0"/>
+            <Label x:Name="lbl_Info" Text="{Binding Path=Info}" VerticalOptions="Center" Grid.Column="0"/>
             <Image x:Name="image_Info" WidthRequest="50" HeightRequest="50"/>
             <StackLayout VerticalOptions="Center" Grid.Column="1" >
                 <Label Text="温度："/>
@@ -49,23 +49,38 @@
             </StackLayout>
         </Grid>
         <Grid Grid.Row="3">
-            <Label Text="未来五天天气：" Grid.Column="0" />
+            <Label Text="未来5天天气：" Grid.Column="0" />
         </Grid>
         <Grid Grid.Row="4">
             <CollectionView x:Name="listBox_Future" HorizontalOptions="Center" ItemsLayout="HorizontalList" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Border Background="LightGray">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="10,10,10,10" />
-                            </Border.StrokeShape>
-                            <StackLayout HorizontalOptions="Center">
+                        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                            <Border Background="LightGray">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="10,10,0,0" />
+                                </Border.StrokeShape>
                                 <Label x:Name="lbl_FutureDate" Text="{Binding Path=Date}"/>
+                            </Border>
+                            <Border Background="LightGray">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="0,0,0,0" />
+                                </Border.StrokeShape>
                                 <Label x:Name="lbl_FutureTemperatur" Text="{Binding Path=Temperature}"/>
+                            </Border>
+                            <Border Background="LightGray">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="0,0,0,0" />
+                                </Border.StrokeShape>
                                 <Label x:Name="lbl_FutureWeather" Text="{Binding Path=Weather}"/>
+                            </Border>
+                            <Border Background="LightGray">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="0,0,10,10" />
+                                </Border.StrokeShape>
                                 <Label x:Name="lbl_FutureDirect" Text="{Binding Path=Direct}"/>
-                            </StackLayout>
-                        </Border>
+                            </Border>
+                        </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
